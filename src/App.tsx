@@ -428,8 +428,8 @@ export default function App() {
           <div className="brand">
             <BrandMark />
             <div className="brand-text">
-              <b>The Little Sensor Station</b>
-              <span>grown-up telemetry, softly drawn</span>
+              <b>Aqua Pulse</b>
+              <span>Water Quality Monitoring for Aqua-Culture</span>
             </div>
           </div>
           <div className="top-actions">
@@ -506,8 +506,8 @@ export default function App() {
         {/* ── charts ── */}
         <div className="charts-head rise" style={{ animationDelay: "400ms" }}>
           <div>
-            <h2>The three little charts</h2>
-            <p>from your own ThingSpeak snippets, dressed in the palette</p>
+            <h2>Thingspeak Charts</h2>
+            <p>imported from Thingspeak</p>
           </div>
         </div>
         <section className="charts-grid">
