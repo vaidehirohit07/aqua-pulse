@@ -466,12 +466,10 @@ export default function App() {
           <div className="rise" style={{ animationDelay: "60ms" }}>
             <div className="eyebrow">ThingSpeak · Channel {CHANNEL_ID}</div>
             <h1>
-              A soft little place for your <span className="accent">live sensors</span>.
+              Live <span className="accent">Sensor Readings</span>.
             </h1>
             <p className="lede">
-              Temperature, humidity and distance — read every few moments, drawn gently,
-              and refreshed without lifting a finger. The charts update themselves; the
-              numbers below follow along politely.
+              Live Temperature, humidity and distance readings updated every 20 seconds.
             </p>
             <div className="hero-meta">
               <span className="meta-chip">
