@@ -22,7 +22,7 @@ const CHANNEL_ID = 3530682;
 const POLL_MS = 20000;
 const AUTO_MS = 60; // seconds
 
-type FieldKey = "field1" | "field2" | "field3";
+type FieldKey = "field1" | "field2" | "field3" | "field4";
 
 interface Metric {
   id: FieldKey;
@@ -52,6 +52,14 @@ const IconDrop = (
   <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
     <path d="M12 3.4c3.4 4 5.8 6.9 5.8 9.8a5.8 5.8 0 1 1-11.6 0c0-2.9 2.4-5.8 5.8-9.8z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
     <path d="M9.2 13.7a2.9 2.9 0 0 0 2.5 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+const IconTds = (
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+    <path d="M12 3.4c3.4 4 5.8 6.9 5.8 9.8a5.8 5.8 0 1 1-11.6 0c0-2.9 2.4-5.8 5.8-9.8z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+    <circle cx="10.2" cy="13.6" r="1.1" fill="currentColor" />
+    <circle cx="13.9" cy="15.3" r=".8" fill="currentColor" />
+    <circle cx="13.4" cy="11.4" r=".7" fill="currentColor" opacity=".6" />
   </svg>
 );
 const IconSonar = (
@@ -98,6 +106,20 @@ const METRICS: Metric[] = [
   {
     id: "field3",
     chartNo: 3,
+    label: "TDS",
+    chartTitle: "Water TDS level",
+    unit: "ppm",
+    decimals: 0,
+    lineColor: "D9A84E",
+    deep: "#d9a84e",
+    tint: "#fbf3e0",
+    fill: "rgba(217,168,78,.14)",
+    hint: "Field 3 · dissolved solids",
+    icon: IconTds,
+  },
+  {
+    id: "field4",
+    chartNo: 4,
     label: "Distance",
     chartTitle: "Ultrasonic distance",
     unit: "cm",
@@ -106,7 +128,7 @@ const METRICS: Metric[] = [
     deep: "#d98997",
     tint: "#faedef",
     fill: "rgba(217,137,151,.13)",
-    hint: "Field 3 · HC-SR04 sensor",
+    hint: "Field 4 · HC-SR04 sensor",
     icon: IconSonar,
   },
 ];
@@ -117,6 +139,7 @@ const EMPTY: DataState = {
   field1: { cur: null, prev: null, series: [] },
   field2: { cur: null, prev: null, series: [] },
   field3: { cur: null, prev: null, series: [] },
+  field4: { cur: null, prev: null, series: [] },
 };
 
 const num = (v: unknown): number | null => {
@@ -347,7 +370,7 @@ export default function App() {
   const [feedAt, setFeedAt] = useState<Date | null>(null);
   const [, setTick] = useState(0);
 
-  const [chartBust, setChartBust] = useState<Record<number, number>>({ 1: 0, 2: 0, 3: 0 });
+  const [chartBust, setChartBust] = useState<Record<number, number>>({ 1: 0, 2: 0, 3: 0, 4: 0 });
   const [auto, setAuto] = useState(false);
   const [autoCount, setAutoCount] = useState(AUTO_MS);
 
@@ -395,7 +418,7 @@ export default function App() {
 
   /* optional gentle chart auto-reload */
   const refreshAll = useCallback(
-    () => setChartBust((b) => ({ 1: b[1] + 1, 2: b[2] + 1, 3: b[3] + 1 })),
+    () => setChartBust((b) => ({ 1: b[1] + 1, 2: b[2] + 1, 3: b[3] + 1, 4: b[4] + 1 })),
     []
   );
   useEffect(() => {
@@ -428,8 +451,8 @@ export default function App() {
           <div className="brand">
             <BrandMark />
             <div className="brand-text">
-              <b>Aqua Pulse</b>
-              <span>Water Quality Monitoring for Aqua-Culture</span>
+              <b>The Little Sensor Station</b>
+              <span>grown-up telemetry, softly drawn</span>
             </div>
           </div>
           <div className="top-actions">
@@ -466,10 +489,12 @@ export default function App() {
           <div className="rise" style={{ animationDelay: "60ms" }}>
             <div className="eyebrow">ThingSpeak · Channel {CHANNEL_ID}</div>
             <h1>
-              Live <span className="accent">Sensor Readings</span>.
+              A soft little place for your <span className="accent">live sensors</span>.
             </h1>
             <p className="lede">
-              Live Temperature, humidity and distance readings updated every 20 seconds.
+              Temperature, humidity, TDS and distance — read every few moments, drawn gently,
+              and refreshed without lifting a finger. The charts update themselves; the
+              numbers below follow along politely.
             </p>
             <div className="hero-meta">
               <span className="meta-chip">
@@ -504,8 +529,8 @@ export default function App() {
         {/* ── charts ── */}
         <div className="charts-head rise" style={{ animationDelay: "400ms" }}>
           <div>
-            <h2>Thingspeak Charts</h2>
-            <p>imported from Thingspeak</p>
+            <h2>The four little charts</h2>
+            <p>from your own ThingSpeak snippets, dressed in the palette</p>
           </div>
         </div>
         <section className="charts-grid">
