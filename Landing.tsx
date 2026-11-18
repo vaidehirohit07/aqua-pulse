@@ -11,14 +11,14 @@ const FEATURES = [
   },
   {
     title: "Four sensors, one glance",
-    body: "Temperature, humidity, TDS and distance — each with a trend chip and a gentle sparkline.",
+    body: "Temperature, Turbidity, TDS and distance — each with real time readings from ThingSpeak.",
     icon: <LineChart size={22} strokeWidth={2.2} />,
     tint: "#ecf4ee",
     deep: "#6fa080",
   },
   {
-    title: "Yours only",
-    body: "Sign in with email or Google. Your dashboard stays behind a soft little lock.",
+    title: "Your Authenticated Dashboard",
+    body: "Sign in with email or Google. Your dashboard stays behind a safe lock.",
     icon: <ShieldCheck size={22} strokeWidth={2.2} />,
     tint: "#faedef",
     deep: "#d98997",
@@ -27,8 +27,8 @@ const FEATURES = [
 
 const STEPS = [
   { n: "01", t: "Sensors speak", d: "Your board posts readings to ThingSpeak channel 3530682." },
-  { n: "02", t: "We listen", d: "The dashboard polls the API every 20 seconds, quietly." },
-  { n: "03", t: "You glance", d: "Numbers tween, charts redraw, trends update themselves." },
+  { n: "02", t: "We listen", d: "The dashboard polls the API every 20 seconds accurately." },
+  { n: "03", t: "You watch", d: "The readings  update themselves." },
 ];
 
 export default function Landing({ onAuth }: { onAuth: (mode: "in" | "up") => void }) {
@@ -45,7 +45,7 @@ export default function Landing({ onAuth }: { onAuth: (mode: "in" | "up") => voi
           <div className="brand">
             <BrandMark />
             <div className="brand-text">
-              <b>The Little Sensor Station</b>
+              <b>SEE LIVE MONITORING OF YOUR SENSORS</b>
               <span>grown-up telemetry, softly drawn</span>
             </div>
           </div>
@@ -64,11 +64,11 @@ export default function Landing({ onAuth }: { onAuth: (mode: "in" | "up") => voi
           <div className="rise" style={{ animationDelay: "60ms" }}>
             <div className="eyebrow">IoT dashboard · live telemetry</div>
             <h1 className="land-h1">
-              Watch your sensors breathe, in <span className="accent">real time</span>.
+              Watch Your Sensors Read And Display Data  <span className="accent">real time</span>.
             </h1>
             <p className="lede">
-              A soft, quiet home for your ThingSpeak data. Temperature, humidity, TDS and
-              distance — gathered every few moments and drawn in pastel. Sign in to open
+              A place to display your ThingSpeak data. Temperature, Turbidity, TDS and
+              Water level — gathered every few moments and drawn in pastel. Sign in to open
               your dashboard.
             </p>
             <div className="hero-meta" style={{ gap: 12 }}>
