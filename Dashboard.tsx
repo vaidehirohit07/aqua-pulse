@@ -14,7 +14,7 @@ import {
 import { useAuth } from "../auth/AuthContext";
 
 /* ════════════════════════════════════════════════════════════════
-   THE LITTLE LIVE DASHBOARD — ThingSpeak channel 3530682
+   THE LIVE DASHBOARD — ThingSpeak channel 3530682
    • Stat cards poll the JSON API every 20s (values, trends, sparklines)
    • Charts use ThingSpeak's dynamic=true embeds (they live-update
      themselves) + optional gentle auto-reload every 60s
@@ -94,8 +94,8 @@ const METRICS: Metric[] = [
   {
     id: "field2",
     chartNo: 2,
-    label: "Humidity",
-    chartTitle: "Turbidity",
+    label: "",
+    chartTitle: "",
     unit: "%",
     decimals: 1,
     lineColor: "6FA080",
@@ -122,7 +122,7 @@ const METRICS: Metric[] = [
   {
     id: "field4",
     chartNo: 4,
-    label: "Distance",
+    label: "Water Level",
     chartTitle: "Water Level",
     unit: "cm",
     decimals: 0,
@@ -226,10 +226,10 @@ function Sparkles({ seed = 0 }: { seed?: number }) {
   );
 }
 
-/* ── hero scene illustration: a little sensor station ── */
+/* ── hero scene illustration: a sensor station ── */
 export function Scene() {
   return (
-    <svg viewBox="0 0 340 208" fill="none" role="img" aria-label="Little sensor station illustration">
+    <svg viewBox="0 0 340 208" fill="none" role="img" aria-label="sensor station illustration">
       <ellipse cx="172" cy="118" rx="156" ry="96" fill="#fbe9df" opacity=".55" />
       {/* sun */}
       <circle cx="272" cy="38" r="17" fill="#f2d897" stroke="#eccb75" strokeWidth="2" className="scene-blink" />
@@ -454,7 +454,7 @@ export default function Dashboard() {
           <div className="brand">
             <BrandMark />
             <div className="brand-text">
-              <b>The Little Sensor Station</b>
+              <b>The Sensor Station</b>
               <span>grown-up telemetry, softly drawn</span>
             </div>
           </div>
@@ -505,10 +505,10 @@ export default function Dashboard() {
               Welcome back{user?.name ? `, ${user.name.split(" ")[0]}` : ""} · Channel {CHANNEL_ID}
             </div>
             <h1>
-              A soft little place for your <span className="accent">live sensors</span>.
+              A safe place for your <span className="accent">live sensors</span>.
             </h1>
             <p className="lede">
-              Temperature, humidity, TDS and distance — read every few moments, drawn gently,
+              Temperature, TDS and Water level — read every few moments, drawn gently,
               and refreshed without lifting a finger. The charts update themselves; the
               numbers below follow along politely.
             </p>
@@ -545,7 +545,7 @@ export default function Dashboard() {
         {/* ── charts ── */}
         <div className="charts-head rise" style={{ animationDelay: "400ms" }}>
           <div>
-            <h2>The four little charts</h2>
+            <h2>The four charts</h2>
             <p>from your own ThingSpeak snippets, dressed in the palette</p>
           </div>
         </div>

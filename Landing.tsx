@@ -11,7 +11,7 @@ const FEATURES = [
   },
   {
     title: "Four sensors, one glance",
-    body: "Temperature, Turbidity, TDS and distance — each with real time readings from ThingSpeak.",
+    body: "Temperature,  TDS and Water Level — each with real time readings from ThingSpeak.",
     icon: <LineChart size={22} strokeWidth={2.2} />,
     tint: "#ecf4ee",
     deep: "#6fa080",
